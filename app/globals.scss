@@ -9,3 +9,9 @@ body {
   background-color: black;
   color: #fff;
 }
+
+@import '../styles/table/table.scss';
+@import '../styles/table/tableRow.scss';
+@import '../styles/ui/button.scss';
+@import '../styles/ui/input.scss';
+@import '../styles/watchList.scss';

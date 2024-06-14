@@ -56,6 +56,12 @@ export function CRYPTOContextProvider({ children }: CRYPTOContextProviderProps) 
 
         setCryptoPriceList(response.data);
         setLoading(false);
+
+        // get watchList from local storage
+        const watchList = localStorage.getItem('watchList');
+        if (watchList) {
+          setWatchList(JSON.parse(watchList));
+        }
       })
       .catch((error) => {
         console.error('Error fetching data: ', error);
@@ -68,7 +74,7 @@ export function CRYPTOContextProvider({ children }: CRYPTOContextProviderProps) 
       if (!prevCryptoPriceList) {
         return [];
       }
-
+      setPage(1);
       return prevCryptoPriceList
         .map((crypto) => {
           const matches = crypto.name.toLowerCase().includes(searchValue.toLowerCase());
@@ -88,10 +94,14 @@ export function CRYPTOContextProvider({ children }: CRYPTOContextProviderProps) 
 
   function addToWatchList(id: string) {
     setWatchList([...watchList, id]);
+    // save to local storage
+    localStorage.setItem('watchList', JSON.stringify([...watchList, id]));
   }
   function removeFromWatchList(id: string) {
     const updatedWatchList = watchList.filter((watchId) => watchId !== id);
     setWatchList(updatedWatchList);
+    // save to local storage
+    localStorage.setItem('watchList', JSON.stringify(updatedWatchList));
   }
   function nextPage() {
     if (page === Math.ceil(cryptoPriceList.length / 10)) {

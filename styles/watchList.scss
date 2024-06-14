@@ -1,0 +1,26 @@
+.watchList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    background-color: rgb(66, 64, 64);
+  }
+  &__item--active {
+    background-color: rgb(32, 31, 31);
+    border-radius: 0.5rem;
+  }
+}
+
+.watchListContainer {
+  width: 40%;
+}
