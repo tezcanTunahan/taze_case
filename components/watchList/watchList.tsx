@@ -1,10 +1,11 @@
 import React from 'react';
 import { useCRYPTOContext } from '@/context/cryptoContext';
 import '@/styles/watchList.scss';
+import CryptoChart from '../CryptoChart';
 
 export default function WatchList() {
   const { watchList } = useCRYPTOContext();
-  const [active, setActive] = React.useState<string>();
+  const [active, setActive] = React.useState<string>('');
   return (
     <div className='watchListContainer'>
       <div className='watchList'>
@@ -15,6 +16,7 @@ export default function WatchList() {
         ))}
       </div>
       <p>{active}</p>
+      <CryptoChart id={active} />
     </div>
   );
 }

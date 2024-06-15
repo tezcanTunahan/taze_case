@@ -20,7 +20,7 @@ export default function Home() {
           }}
           value={filter}
         />
-        <div className='table-container'>
+        <div className=''>
           <Table />
         </div>
       </div>

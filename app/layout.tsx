@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import { CRYPTOContextProvider } from '@/context/cryptoContext';
 
 import './globals.scss';
+import Navbar from '@/components/navbar';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,6 +20,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
+        <Navbar />
         <CRYPTOContextProvider>{children}</CRYPTOContextProvider>
       </body>
     </html>

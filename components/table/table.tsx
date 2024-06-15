@@ -5,7 +5,11 @@ import { useCRYPTOContext } from '@/context/cryptoContext';
 import Pagination from '@/components/pagination';
 
 export default function Table() {
-  const { sortCryptoPriceList, cryptoPriceList, watchList, loading, page } = useCRYPTOContext();
+  const { cryptoPriceList, loading, page } = useCRYPTOContext();
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
