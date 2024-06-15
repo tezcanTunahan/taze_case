@@ -31,13 +31,17 @@ export default function CryptoChart({ id }: { id: string }) {
   console.log('Data: ', data);
 
   if (!id) {
-    return <div>Invalid ID</div>;
+    return (
+      <div className=''>
+        <p>Please select a crypto</p>
+      </div>
+    );
   }
 
   return (
     <div>
       <h1>{id}</h1>
-      <BarChart width={600} height={300} data={data}>
+      <BarChart width={300} height={200} data={data}>
         <YAxis />
         <XAxis dataKey='date' />
         <Bar dataKey='price' fill='red' />

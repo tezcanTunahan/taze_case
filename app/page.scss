@@ -1,6 +1,17 @@
-.table-container {
-  width: 40%;
-}
 .main {
   display: flex;
+  gap: 1rem;
+  width: 90%;
+  margin: 0 auto;
+
+  &__table {
+    flex-basis: 50%;
+  }
+  &__watchList {
+    flex-basis: 50%;
+  }
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    width: 95%;
+  }
 }

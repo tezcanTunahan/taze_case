@@ -1,18 +1,33 @@
+'use client';
 import React from 'react';
 import '@/styles/table/table.scss';
 import TableRow from './atoms/tableRow';
 import { useCRYPTOContext } from '@/context/cryptoContext';
 import Pagination from '@/components/pagination';
+import Input from '@/components/ui/input';
 
-export default function Table() {
-  const { cryptoPriceList, loading, page } = useCRYPTOContext();
+type Props = {
+  className?: string;
+};
+
+export default function Table({ className }: Props) {
+  const [filter, setFilter] = React.useState('');
+  const { cryptoPriceList, loading, page, sortCryptoPriceList } = useCRYPTOContext();
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
   return (
-    <>
+    <div className={'table_container' + className}>
+      <Input
+        placeholder='Search'
+        onChange={(e) => {
+          setFilter(e.target.value);
+          sortCryptoPriceList(e.target.value);
+        }}
+        value={filter}
+      />
       <table>
         <caption>Crypto Price List</caption>
         <thead>
@@ -33,6 +48,6 @@ export default function Table() {
         </tbody>
       </table>
       <Pagination />
-    </>
+    </div>
   );
 }
