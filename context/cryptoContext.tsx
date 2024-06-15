@@ -22,6 +22,7 @@ const CRYPTOContext = createContext({
   page: 1,
   nextPage: () => {},
   previousPage: () => {},
+  error: '',
 });
 
 export function useCRYPTOContext() {
@@ -37,6 +38,7 @@ export function CRYPTOContextProvider({ children }: CRYPTOContextProviderProps) 
   const [page, setPage] = useState(1);
   const [watchList, setWatchList] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     axios
@@ -66,6 +68,7 @@ export function CRYPTOContextProvider({ children }: CRYPTOContextProviderProps) 
       .catch((error) => {
         console.error('Error fetching data: ', error);
         setLoading(false);
+        setError('Error fetching data');
       });
   }, []);
 
@@ -126,6 +129,7 @@ export function CRYPTOContextProvider({ children }: CRYPTOContextProviderProps) 
     page,
     nextPage,
     previousPage,
+    error,
   };
 
   return <CRYPTOContext.Provider value={value}>{children}</CRYPTOContext.Provider>;

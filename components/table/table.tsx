@@ -12,10 +12,13 @@ type Props = {
 
 export default function Table({ className }: Props) {
   const [filter, setFilter] = React.useState('');
-  const { cryptoPriceList, loading, page, sortCryptoPriceList } = useCRYPTOContext();
+  const { cryptoPriceList, loading, page, sortCryptoPriceList, error } = useCRYPTOContext();
 
   if (loading) {
     return <div>Loading...</div>;
+  }
+  if (error) {
+    return <div>{error}</div>;
   }
 
   return (
